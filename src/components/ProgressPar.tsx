@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 
 const ScrollProgressBar = () => {
-  const [scrollPercentage, setScrollPercentage] = useState(0);
+  const [scrollPercentage, setScrollPercentage] = useState<number>(0);
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -17,13 +17,14 @@ const ScrollProgressBar = () => {
       window.removeEventListener("scroll", updateScrollProgress);
     };
   }, []);
+  
 
   return (
     <div style={{
       
       
       width: `${scrollPercentage}%`,
-      height: "6px",
+      height: "3px",
       backgroundColor: "#408c7b",
       transition: "width 0.2s ease",
       zIndex: 9999

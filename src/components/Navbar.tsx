@@ -7,7 +7,7 @@ import ScrollProgressBar from './ProgressPar';
 const Navbar: React.FC = () => {
     return (
         <>
-        <nav className="navbar flex justify-between items-center bg-white shadow-md p-8 rtl  sticky top-0 z-50">
+        <nav className="navbar flex justify-around items-center bg-[#f3faf7] shadow-md p-8 rtl  sticky top-0 z-50">
             <div className="flex">
                 <img src={img} alt="image/logo" className='w-[100px] mr-5' />
                 <ul className='flex items-center gap-4'>

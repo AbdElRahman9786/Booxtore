@@ -1,5 +1,4 @@
 import img from "../../assets/images/login.ebd58562113a46604e6a.png"
-import Navbar from "../../components/Navbar";
 import Input from "../../ui/input/Input";
 const LogIn: React.FC = () => {
 
@@ -9,7 +8,7 @@ const LogIn: React.FC = () => {
   return (
 
     <>
-      <Navbar />
+      
       <div className="flex justify-between items-center min-h-screen bg-[#f3faf7]  max-md:flex-wrap rtl">
         <div className="w-1/2 p-10  ml-5 max-md:ml-0 max-md:order-2 py-20 bg-white shadow-lg rounded-lg text-right max-md:w-full">
           <h1 className="mb-10 font-bold text-3xl">:تسجيل الدخول</h1>

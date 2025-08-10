@@ -3,13 +3,14 @@ import imgCart from '../assets/images/cartIcon.702e88b26f5a977c99c3.png'
 import bookIcon from '../assets/images/bookicon.svg'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ScrollProgressBar from './ProgressPar';
+import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
     return (
         <>
         <nav className="navbar flex justify-around items-center bg-[#f3faf7] shadow-md p-8 rtl  sticky top-0 z-50">
             <div className="flex">
-                <img src={img} alt="image/logo" className='w-[100px] mr-5' />
+               <Link to="/"> <img src={img} alt="image/logo" className='w-[100px] mr-5' /></Link>
                 <ul className='flex items-center gap-4'>
                     <li><a href="/home">الاكثر مبيعا؟</a></li>
                     <li><a href="/about">احنا مين؟</a></li>
@@ -20,7 +21,7 @@ const Navbar: React.FC = () => {
 
                 <li className='hover:shadow-2xl hover:scale-105 duration-150'><a href="/contact"><img src={imgCart} alt="cart iamge" className='w-[40px] p-2 bg-[#d8efe7] rounded-2xl hover:shadow-xl duration-150' /></a></li>
                 <li className='bg-[#408c7b] p-2 rounded-md border-[#b2ddd0] border-1 hover:shadow-2xl hover:scale-105 duration-150'><span className="max-md:hidden">انشئ حساب</span><PersonAddIcon/></li>
-                <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><a href="/about"><div className='flex gap-2'><p className="max-md:hidden">سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></a></li>
+                <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/login"><div className='flex gap-2'><p className="max-md:hidden">سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
             </ul>
             
             

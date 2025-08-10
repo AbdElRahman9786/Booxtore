@@ -1,10 +1,10 @@
 import img from '../../assets/images/bookCollectionHeroImg.f659d119a8bf46d65353.png'
-import Navbar from '../../components/Navbar'
+
 import imgbtnicon from '../../assets/images/bookIconBtn.faf1fedc69da3b7ef43af219fb921d43.svg'
 export const Home = () => {
   return (
     <>
-    <Navbar/>
+    
 <div className='bg-[#f3faf7] h-screen flex justify-evenly items-center pb-15 max-md:p-10  max-md:!flex-col max-md:items-center'>
 
 <div className='flex flex-col justify-between items-end text-end max-md:text-center  max-md:items-center max-w-2xl gap-5 text-[#408c7b] '>

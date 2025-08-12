@@ -1,4 +1,5 @@
 import LogIn from './pages/login/LogIn';
+import './App.css'
 import {
   createBrowserRouter,
   RouterProvider,

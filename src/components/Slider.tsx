@@ -1,8 +1,10 @@
 
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 import img from '../assets/images/VVKYgjkAcUFuq7Dj3KUPJHKmiBluprQbf61syspG.png'
 import 'swiper/css/bundle';
+
 
 
 
@@ -13,8 +15,11 @@ export const Slider = () => {
       
         <div className='w-full max-w-full overflow-x-hidden '>
            <Swiper
+            
       spaceBetween={50}
       slidesPerView={3}
+      
+      
       onSlideChange={() => console.log('slide change')}
       onSwiper={(swiper) => console.log(swiper)}
        breakpoints={{
@@ -25,7 +30,7 @@ export const Slider = () => {
       slidesPerView: 2, // tablet
     },
     1024: {
-      slidesPerView: 4, // desktop
+      slidesPerView: 3, // desktop
     },
   }}
     >
@@ -33,7 +38,7 @@ export const Slider = () => {
         <div className=' rounded-md border-1 boreder-[#b2ddd0]'>
           <div className='relative overflow-hidden'>
 
-        <img src={img} alt='this book img' className=' border-1 boreder-[#b2ddd0] hover:scale-105 duration-150 overflow-hidden peer '/>
+        <img src={img} alt='this book img' className=' border-b-1 boreder-[#b2ddd0] rounded-md hover:scale-105 duration-150 overflow-hidden peer '/>
         <div className='absolute w-full  left-0 right-0 bottom-0 bg-white p-6 translate-y-[100%] peer-hover:translate-y-0 duration-150'>llllllllllll</div>
         </div>
         
@@ -46,7 +51,7 @@ export const Slider = () => {
         <div className=' rounded-md border-1 boreder-[#b2ddd0]'>
           <div className='relative overflow-hidden'>
 
-        <img src={img} alt='this book img' className=' border-1 boreder-[#b2ddd0] hover:scale-105 duration-150 overflow-hidden peer '/>
+        <img src={img} alt='this book img' className=' border-b-1 boreder-[#b2ddd0] rounded-md  hover:scale-105 hover:rounded-md duration-150 overflow-hidden peer '/>
         <div className='absolute w-full  left-0 right-0 bottom-0 bg-white p-6 translate-y-[100%] peer-hover:translate-y-0 duration-150'>llllllllllll</div>
         </div>
         
@@ -58,7 +63,7 @@ export const Slider = () => {
       <SwiperSlide>     <div className=' rounded-md border-1 boreder-[#b2ddd0]'>
           <div className='relative overflow-hidden'>
 
-        <img src={img} alt='this book img' className=' border-1 boreder-[#b2ddd0] hover:scale-105 duration-150 overflow-hidden peer '/>
+        <img src={img} alt='this book img' className=' border-b-1 boreder-[#b2ddd0] rounded-md hover:scale-105 duration-150 overflow-hidden peer '/>
         <div className='absolute w-full  left-0 right-0 bottom-0 bg-white p-6 translate-y-[100%] peer-hover:translate-y-0 duration-150'>llllllllllll</div>
         </div>
         
@@ -69,7 +74,7 @@ export const Slider = () => {
       <SwiperSlide>    <div className=' rounded-md border-1 boreder-[#b2ddd0]'>
           <div className='relative overflow-hidden'>
 
-        <img src={img} alt='this book img' className=' border-1 boreder-[#b2ddd0] hover:scale-105 duration-150 overflow-hidden peer '/>
+        <img src={img} alt='this book img' className=' border-b-1 rounded-md boreder-[#b2ddd0] hover:scale-105 duration-150 overflow-hidden peer '/>
         <div className='absolute w-full  left-0 right-0 bottom-0 bg-white p-6 translate-y-[100%] peer-hover:translate-y-0 duration-150'>llllllllllll</div>
         </div>
         

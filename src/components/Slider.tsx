@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import img from '../assets/images/VVKYgjkAcUFuq7Dj3KUPJHKmiBluprQbf61syspG.png'
-import 'swiper/css';
+import 'swiper/css/bundle';
 
 
 

@@ -6,10 +6,10 @@ import ScrollProgressBar from './ProgressPar';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
-
+type toggleMenuType = () => void;
 const Navbar: React.FC = () => {
     const [isOpen,setIsOpen]=useState<boolean>(false);
-    const toggleMenu = () => {
+    const toggleMenu:toggleMenuType = () => {
         setIsOpen((prev) => !prev);
     };
     console.log(isOpen);
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
         <ScrollProgressBar/>
         </div>
         {isOpen && (
-            <div className="fixed  left-0 w-full  h-1/3 bg-[#317062]   z-50 flex flex-col items-center justify-center  ">
+            <div className="fixed  left-0 w-full  h-1/3 bg-[#317062] p-5  z-50 flex flex-col items-center justify-center  ">
                 <ul className="flex flex-col items-center gap-4 text-lg">
                     <li><Link to="/home" onClick={toggleMenu} >الاكثر مبيعا؟</Link></li>
                     <li><Link to="/about" onClick={toggleMenu}>احنا مين؟</Link></li>

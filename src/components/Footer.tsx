@@ -1,4 +1,4 @@
-import React from 'react'
+
 import img from '../assets/images/logoBooxtore.76f97d147d00a1c42dfb4f372782a937.svg'
 import facjebook from '../assets/images/download.png'
 import tiktok from '../assets/images/tiktok_icon.8a9452a0a4c037d9de63.png'

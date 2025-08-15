@@ -2,9 +2,11 @@ import TextField from '@mui/material/TextField';
 
 type props={
   lable:string,
-  classes:string
+  classes:string,
+  name:string,
+  onChange:(e:React.ChangeEvent<HTMLInputElement>)=> void
 }
-const Input:React.FC<props>=({lable,classes}:props)=>{
+const Input:React.FC<props>=({lable,classes,name,onChange}:props)=>{
     return(
                    <TextField className={classes}
               id="input-with-icon-adornment"
@@ -12,6 +14,8 @@ const Input:React.FC<props>=({lable,classes}:props)=>{
               label={lable}
               margin="dense"
               dir="rtl"
+              name={name}
+              onChange={onChange}
         
              
             />

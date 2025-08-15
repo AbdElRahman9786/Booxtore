@@ -8,6 +8,11 @@ import './App.css'
 import { Home } from './pages/Home/Home';
 import RootLayOut from './components/RootLayOut';
 import Error from './pages/error/Error';
+import {
+  
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 const router=createBrowserRouter([
   {path:'/',element:<RootLayOut/>,
     errorElement:(
@@ -24,11 +29,13 @@ const router=createBrowserRouter([
   
 ]);
 function App() {
- 
+ const queryClient = new QueryClient()
 
   return (
     <>
+    <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
+      </QueryClientProvider>
     </>
   )
 }

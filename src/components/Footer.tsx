@@ -6,7 +6,7 @@ import instagram from '../assets/images/instagram_icon.3c5c461f83cc7069a13f.png'
 import whatsapp from '../assets/images/whatsapp_icon.97b90b6e3f8c70254204.png'
 export const Footer = () => {
   return (
-    <div className='bg-[#233341] w-screen max-w-full p-8 mt-40'>
+    <div className='bg-[#233341] w-screen max-w-full p-8 '>
         <div className='flex flex-col items-center justify-center text-white gap-4'>
 <div>
     <img src={img} alt="logo" className=' mb-4' />

@@ -13,6 +13,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
+import  Regester  from './pages/regester/Regester';
 const router=createBrowserRouter([
   {path:'/',element:<RootLayOut/>,
     errorElement:(
@@ -23,6 +24,7 @@ const router=createBrowserRouter([
     children:[
 {path: '/', element: <Home />},
   {path: '/login', element: <LogIn />},
+  {path: '/register', element: <Regester/>}, 
     ]
   }
   

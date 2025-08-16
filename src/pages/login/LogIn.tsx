@@ -2,7 +2,7 @@ import { useState } from "react";
 import img from "../../assets/images/login.ebd58562113a46604e6a.png"
 import Input from "../../ui/input/Input";
 import { useMutation } from "@tanstack/react-query";
-import loginRequset from "../../util/sendhttp";
+import  loginRequset  from "../../util/sendhttp";
 import Button from "@mui/material/Button";
 
 // Define interface for login data
@@ -27,7 +27,7 @@ const LogIn: React.FC = () => {
   }
 
   const { mutate,isPending } = useMutation({
-   mutationFn: (data: LoginData) => loginRequset(data.email, data.password),
+   mutationFn: (data: LoginData) => loginRequset.loginRequset(data.email, data.password),
   });
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>): void => {

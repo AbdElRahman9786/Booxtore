@@ -5,7 +5,7 @@ type LoginResponse = {
   massege: string;
   token: string;
 }
- const loginRequset  = async (email:string, password:string) => {
+async function loginRequset  (email:string, password:string)  {
 
 
 await axios.post('http://localhost:5000/api/login', {
@@ -17,5 +17,15 @@ await axios.post('http://localhost:5000/api/login', {
   throw error;
 });
 }
+async function regesterRequset  (name:string, email:string, password:string, role:string){
+  await axios.post('http://localhost:5000/api/users', {name, email, password, role})
+  .then((response: AxiosResponse<LoginResponse>) => {
+    return response.data;
+  })
+  .catch((error) => {
+    throw error;
+  });
+}
 
-export default loginRequset;
+export default {loginRequset,
+  regesterRequset}

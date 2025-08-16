@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
             <ul className="flex items-center  gap-4">
 
                 <li className='hover:shadow-2xl hover:scale-105 duration-150'><a href="/contact"><img src={imgCart} alt="cart iamge" className='w-[40px] p-2 bg-[#d8efe7] rounded-2xl hover:shadow-xl duration-150' /></a></li>
-                <li className='bg-[#408c7b] p-2 rounded-md border-[#b2ddd0] border-1 hover:shadow-2xl hover:scale-105 duration-150 max-md:hidden'><span >انشئ حساب</span><PersonAddIcon/></li>
+                <li className='bg-[#408c7b] p-2 rounded-md border-[#b2ddd0] border-1 hover:shadow-2xl hover:scale-105 duration-150 max-md:hidden'><Link to="/register"><span >انشئ حساب</span><PersonAddIcon/></Link></li>
                 <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150 max-md:hidden'><Link to="/login"><div className='flex gap-2'><p className="max-md:hidden">سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
             </ul>
             
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
                     <li><Link to="/home" onClick={toggleMenu} >الاكثر مبيعا؟</Link></li>
                     <li><Link to="/about" onClick={toggleMenu}>احنا مين؟</Link></li>
                     <li><Link to="/contact" onClick={toggleMenu}>الاسئله الشائعه؟</Link></li>
-                    <li className='bg-[#408c7b] p-2 rounded-md border-[#b2ddd0] border-1 hover:shadow-2xl hover:scale-105 duration-150'><span>انشئ حساب</span><PersonAddIcon/></li>
+                                <li className='bg-[#408c7b] p-2 rounded-md border-[#b2ddd0] border-1 hover:shadow-2xl hover:scale-105 duration-150 max-md:hidden'><Link to="/register"><span >انشئ حساب</span><PersonAddIcon/></Link></li>
                     <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/login" onClick={toggleMenu}><div className='flex gap-2'><p>سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
                 </ul>
                 </div>

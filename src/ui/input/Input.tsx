@@ -4,9 +4,10 @@ type props={
   lable:string,
   classes:string,
   name:string,
-  onChange:(e:React.ChangeEvent<HTMLInputElement>)=> void
+  onChange:(e:React.ChangeEvent<HTMLInputElement>)=> void,
+  required?:boolean
 }
-const Input:React.FC<props>=({lable,classes,name,onChange}:props)=>{
+const Input:React.FC<props>=({lable,classes,name,onChange,required}:props)=>{
     return(
                    <TextField className={classes}
               id="input-with-icon-adornment"
@@ -16,6 +17,7 @@ const Input:React.FC<props>=({lable,classes,name,onChange}:props)=>{
               dir="rtl"
               name={name}
               onChange={onChange}
+              required={required}
         
              
             />

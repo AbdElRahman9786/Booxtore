@@ -1,9 +1,12 @@
-import { useState } from "react";
+import {  useState } from "react";
 import img from "../../assets/images/login.ebd58562113a46604e6a.png"
 import Input from "../../ui/input/Input";
 import { useMutation } from "@tanstack/react-query";
 import  loginRequset  from "../../util/sendhttp";
 import Button from "@mui/material/Button";
+import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+
 
 // Define interface for login data
 interface LoginData {
@@ -16,7 +19,7 @@ interface LoginData {
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-
+const navigate=useNavigate()
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     if (name === 'email') {
@@ -26,17 +29,54 @@ const LogIn: React.FC = () => {
     }
   }
 
-  const { mutate,isPending } = useMutation({
+  const { mutate,isPending,isSuccess } = useMutation({
    mutationFn: (data: LoginData) => loginRequset.loginRequset(data.email, data.password),
+    onSuccess: () => {
+      toast('تم تسجيل الدخول بنجاح', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+        
+    },
+    onError: () => {
+      toast.error('فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد الخاصة بك.', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }
+  
   });
+setTimeout(() => {  
+  if(isSuccess){
+    navigate('/')
+  }
+}, 1000);
+
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     mutate({ email, password });
   }
 
+
+ 
+
   return (
     <>
+
+
       <div className="flex justify-between items-center min-h-screen bg-[#f3faf7]  max-md:flex-wrap rtl">
         <div className="w-1/2 p-10  ml-5 max-md:ml-0 max-md:order-2 py-20 bg-white shadow-lg rounded-lg text-right max-md:w-full">
           <h1 className="mb-10 font-bold text-3xl">:تسجيل الدخول</h1>
@@ -46,6 +86,7 @@ const LogIn: React.FC = () => {
               classes="w-full mb-10 text-right" 
               name="email" 
               onChange={handleChange} 
+              required
               
             />
             <br />
@@ -54,6 +95,7 @@ const LogIn: React.FC = () => {
               classes="w-full" 
               name="password" 
               onChange={handleChange} 
+              required
               
             />
             <br />
@@ -73,6 +115,19 @@ const LogIn: React.FC = () => {
           <img src={img} alt="Book Collection" className="min-w-full max-md:h-1/2" />
         </div>
       </div>
+      <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick={false}
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+
+/>
     </>
   );
 };

@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import {  useContext, useState } from "react";
 import img from "../../assets/images/login.ebd58562113a46604e6a.png"
 import Input from "../../ui/input/Input";
 import { useMutation } from "@tanstack/react-query";
@@ -6,6 +6,8 @@ import  loginRequset  from "../../util/sendhttp";
 import Button from "@mui/material/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import decodeToken from "../../util/tokenDecoder";
+import { userContext } from "../../context/usercontext";
 
 
 // Define interface for login data
@@ -19,6 +21,7 @@ interface LoginData {
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const infoContext=useContext(userContext)
 const navigate=useNavigate()
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -31,7 +34,8 @@ const navigate=useNavigate()
 
   const { mutate,isPending,isSuccess } = useMutation({
    mutationFn: (data: LoginData) => loginRequset.loginRequset(data.email, data.password),
-    onSuccess: () => {
+   retry:false,
+    onSuccess: (data) => {
       toast('تم تسجيل الدخول بنجاح', {
         position: "top-right",
         autoClose: 5000,
@@ -42,8 +46,10 @@ const navigate=useNavigate()
         progress: undefined,
         theme: "dark",
         });
-        
+        const info=decodeToken(data.token)
+       infoContext.setUserInfo(info)
     },
+    
     onError: () => {
       toast.error('فشل تسجيل الدخول. يرجى التحقق من بيانات الاعتماد الخاصة بك.', {
         position: "top-right",
@@ -68,6 +74,7 @@ setTimeout(() => {
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     mutate({ email, password });
+    
   }
 
 

@@ -5,14 +5,18 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ScrollProgressBar from './ProgressPar';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { userContext } from '../context/usercontext';
 type toggleMenuType = () => void;
 const Navbar: React.FC = () => {
     const [isOpen,setIsOpen]=useState<boolean>(false);
+    const userInfoContext=useContext(userContext)
     const toggleMenu:toggleMenuType = () => {
         setIsOpen((prev) => !prev);
     };
     console.log(isOpen);
+
+    console.log(userInfoContext.userInfo)
     return (
         <>
         <nav className=" flex justify-around max-md:justify-between items-center bg-[#f3faf7] shadow-md p-8 rtl  sticky top-0 z-50">

@@ -14,6 +14,7 @@ import {
   QueryClientProvider,
 } from '@tanstack/react-query'
 import  Regester  from './pages/regester/Regester';
+import UserContext from './context/usercontext';
 const router=createBrowserRouter([
   {path:'/',element:<RootLayOut/>,
     errorElement:(
@@ -35,8 +36,11 @@ function App() {
 
   return (
     <>
+
     <QueryClientProvider client={queryClient}>
+      <UserContext>
       <RouterProvider router={router} />
+      </UserContext>
       </QueryClientProvider>
     </>
   )

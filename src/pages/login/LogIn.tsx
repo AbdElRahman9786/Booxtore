@@ -7,7 +7,9 @@ import Button from "@mui/material/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import decodeToken from "../../util/tokenDecoder";
-import { userContext } from "../../context/usercontext";
+import { UserInfoContext } from "../../context/usercontext";
+import Cookies from "js-cookie";
+
 
 
 // Define interface for login data
@@ -21,7 +23,7 @@ interface LoginData {
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const infoContext=useContext(userContext)
+  const infoContext=useContext(UserInfoContext)
 const navigate=useNavigate()
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -34,7 +36,7 @@ const navigate=useNavigate()
 
   const { mutate,isPending,isSuccess } = useMutation({
    mutationFn: (data: LoginData) => loginRequset.loginRequset(data.email, data.password),
-   retry:false,
+  
     onSuccess: (data) => {
       toast('تم تسجيل الدخول بنجاح', {
         position: "top-right",
@@ -46,7 +48,11 @@ const navigate=useNavigate()
         progress: undefined,
         theme: "dark",
         });
+        if(data.token){
+          Cookies.set('token',data.token)
+        }
         const info=decodeToken(data.token)
+        
        infoContext.setUserInfo(info)
     },
     

@@ -11,7 +11,7 @@ type LoginResponse = {
 async function loginRequset  (email:string, password:string)  {
 
 try{
-const response:AxiosResponse=   await axios.post('http://localhost:5000/api/login', {
+const response:AxiosResponse= await axios.post('http://localhost:5000/api/login', {
   email: email,
   password: password
 })

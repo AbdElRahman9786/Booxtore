@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import decodeToken from "../../util/tokenDecoder";
-import { UserInfoContext } from "../../context/usercontext";
+import { InfoContext } from "../../context/UserInfoContext";
 import Cookies from "js-cookie";
 
 
@@ -23,7 +23,7 @@ interface LoginData {
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const infoContext=useContext(UserInfoContext)
+  const infoContext=useContext(InfoContext)
 const navigate=useNavigate()
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;

@@ -2,6 +2,7 @@ import img from '../../assets/images/bookCollectionHeroImg.f659d119a8bf46d65353.
 
 import imgbtnicon from '../../assets/images/bookIconBtn.faf1fedc69da3b7ef43af219fb921d43.svg'
 import { Slider } from '../../components/Slider'
+import { Think } from '../../components/Think'
 export const Home = () => {
   return (
     <>
@@ -22,6 +23,7 @@ export const Home = () => {
 
 </div>
 <Slider/>
+<Think/>
 </div>
 
     </>

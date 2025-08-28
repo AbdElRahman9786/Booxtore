@@ -12,7 +12,7 @@ export type UserContextType = {
   setUserInfo: React.Dispatch<React.SetStateAction<User>>;
 };
 
-export const UserInfoContext = createContext<UserContextType>({
+export const InfoContext = createContext<UserContextType>({
   userInfo: { email: "", id: "", role: "" },
   setUserInfo: () => {}
 });

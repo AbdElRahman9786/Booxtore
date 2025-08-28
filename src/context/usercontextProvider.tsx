@@ -1,5 +1,5 @@
 import {useState, type ReactNode } from 'react';
-import { UserInfoContext, type User } from './usercontext';
+import { InfoContext, type User } from './UserInfoContext';
 
 
 
@@ -19,9 +19,9 @@ function UserContext({children}:{children:ReactNode}){
   role: "",})
 
     return(
-        <UserInfoContext.Provider value={{userInfo,setUserInfo}}>
+        <InfoContext.Provider value={{userInfo,setUserInfo}}>
             {children}
-        </UserInfoContext.Provider>
+        </InfoContext.Provider>
     )
 
 }

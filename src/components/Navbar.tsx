@@ -6,22 +6,22 @@ import ScrollProgressBar from './ProgressPar';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useContext, useState } from 'react';
-import { UserInfoContext } from '../context/usercontext';
+import { InfoContext } from '../context/UserInfoContext';
 import Cookies from "js-cookie";
 type toggleMenuType = () => void;
 const Navbar: React.FC = () => {
     const [isOpen,setIsOpen]=useState<boolean>(false);
-    const InfoContext=useContext(UserInfoContext)
+    const UserInfoContext=useContext(InfoContext)
     const toggleMenu:toggleMenuType = () => {
         setIsOpen((prev) => !prev);
     };
     
     function handelLogOut(){
-        InfoContext.setUserInfo({email:'',id:'',role:''})
+        UserInfoContext.setUserInfo({email:'',id:'',role:''})
         Cookies.remove('token')
         
     }
-    console.log(InfoContext.userInfo.email)
+    console.log(UserInfoContext.userInfo.email)
     return (
         <>
         <nav className=" flex justify-around max-md:justify-between items-center bg-[#f3faf7] shadow-md p-8 rtl  sticky top-0 z-50">
@@ -39,9 +39,9 @@ const Navbar: React.FC = () => {
             <ul className="flex items-center  gap-4">
 
                 <li className='hover:shadow-2xl hover:scale-105 duration-150 '><a href="/contact"><img src={imgCart} alt="cart iamge" className='w-[40px] p-2 bg-[#d8efe7] rounded-2xl hover:shadow-xl duration-150' /></a></li>
-                <li className={`bg-red-500 rounded hover:scale-105 duration-150 p-2 cursor-pointer ${!InfoContext.userInfo.email?'hidden':'block'}  `} onClick={handelLogOut}>تسجيل الخروج</li>
-                <li className={`bg-[#408c7b] p-2 rounded-md border-[#b2ddd0] border-1 hover:shadow-2xl hover:scale-105 duration-150 max-md:hidden ${InfoContext.userInfo.email?.length>0? 'hidden':'block'}`}><Link to="/register"><span >انشئ حساب</span><PersonAddIcon/></Link></li>
-                <li className={`bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150 max-md:hidden ${InfoContext.userInfo.email? 'hidden':'block'}`}><Link to="/login"><div className='flex gap-2'><p className="max-md:hidden">سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
+                <li className={`bg-red-500 rounded hover:scale-105 duration-150 p-2 cursor-pointer ${!UserInfoContext.userInfo.email?'hidden':'block'}  `} onClick={handelLogOut}>تسجيل الخروج</li>
+                <li className={`bg-[#408c7b] p-2 rounded-md border-[#b2ddd0] border-1 hover:shadow-2xl hover:scale-105 duration-150 max-md:hidden ${UserInfoContext.userInfo.email?.length>0? 'hidden':'block'}`}><Link to="/register"><span >انشئ حساب</span><PersonAddIcon/></Link></li>
+                <li className={`bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150 max-md:hidden ${UserInfoContext.userInfo.email? 'hidden':'block'}`}><Link to="/login"><div className='flex gap-2'><p className="max-md:hidden">سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
             </ul>
             
             

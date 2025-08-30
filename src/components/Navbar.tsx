@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
                 </div>
                 )}
 
-                {openCart&&<Cart isOpen={openCart}/>}
+                {openCart&&<Cart />}
         </>
     );
 }

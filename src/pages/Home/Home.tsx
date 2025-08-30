@@ -1,6 +1,7 @@
 import img from '../../assets/images/bookCollectionHeroImg.f659d119a8bf46d65353.png'
 
 import imgbtnicon from '../../assets/images/bookIconBtn.faf1fedc69da3b7ef43af219fb921d43.svg'
+import AllBooks from '../../components/AllBooks'
 import { Slider } from '../../components/Slider'
 import { Think } from '../../components/Think'
 export const Home = () => {
@@ -24,6 +25,7 @@ export const Home = () => {
 </div>
 <Slider/>
 <Think/>
+<AllBooks/>
 </div>
 
     </>

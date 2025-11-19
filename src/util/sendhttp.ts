@@ -33,5 +33,15 @@ async function regesterRequset  (name:string, email:string, password:string, rol
   });
 }
 
+
+export async function getBooksRequset  ()  {
+  try{
+  const response:AxiosResponse= await Axios.get('/books')
+  return response.data
+  }catch(err){
+  console.log(err)
+  }
+}
+
 export default {loginRequset,
   regesterRequset}

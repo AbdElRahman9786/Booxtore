@@ -16,6 +16,7 @@ const Navbar: React.FC = () => {
     const [isOpen,setIsOpen]=useState<boolean>(false);
     const [openCart,setOpenCart]=useState<boolean>(false)
     const UserInfoContext=useContext(InfoContext)
+    const token=Cookies.get('token')
     const toggleMenu:toggleMenuType = () => {
         setIsOpen((prev) => !prev);
     };
@@ -31,7 +32,7 @@ const Navbar: React.FC = () => {
         setOpenCart((prev)=>!prev)
 
     }
-    console.log(UserInfoContext.userInfo.email)
+   
     return (
         <>
         <nav className=" flex justify-around max-md:justify-between items-center bg-[#f3faf7] shadow-md p-8 rtl  sticky top-0 z-50 ">
@@ -49,9 +50,18 @@ const Navbar: React.FC = () => {
             <ul className="flex items-center  gap-4">
 
                 <li className='hover:shadow-2xl hover:scale-105 duration-150 ' onClick={handelOpenCart}><img src={imgCart} alt="cart iamge" className='w-[40px] p-2 bg-[#d8efe7] rounded-2xl hover:shadow-xl duration-150 cursor-pointer' /></li>
-                <li className={`bg-red-500 rounded hover:scale-105 duration-150 p-2 cursor-pointer ${!UserInfoContext.userInfo.email?'hidden':'block'}  `} onClick={handelLogOut}>تسجيل الخروج</li>
-                <li className={`bg-[#408c7b] p-2 rounded-md border-[#b2ddd0] border-1 hover:shadow-2xl hover:scale-105 duration-150 max-md:hidden ${UserInfoContext.userInfo.email?.length>0? 'hidden':'block'}`}><Link to="/register"><span >انشئ حساب</span><PersonAddIcon/></Link></li>
-                <li className={`bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150 max-md:hidden ${UserInfoContext.userInfo.email? 'hidden':'block'}`}><Link to="/login"><div className='flex gap-2'><p className="max-md:hidden">سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
+                             {!token?(
+                        <>
+      <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/register" onClick={toggleMenu}><div className='flex gap-2'><p>انشئ حسابك </p> <PersonAddIcon/></div></Link></li>
+                    <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/login" onClick={toggleMenu}><div className='flex gap-2'><p>سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
+                    </>
+                    ):(
+<li className={`bg-red-500 rounded hover:scale-105 duration-150 p-2 cursor-pointer ${!UserInfoContext.userInfo.email?'hidden':'block'}  `} onClick={handelLogOut}>تسجيل الخروج</li>
+                    )}
+                           
+              
+               
+                
             </ul>
             
             
@@ -66,8 +76,15 @@ const Navbar: React.FC = () => {
                     <li><Link to="/home" onClick={toggleMenu} >الاكثر مبيعا؟</Link></li>
                     <li><Link to="/about" onClick={toggleMenu}>احنا مين؟</Link></li>
                     <li><Link to="/contact" onClick={toggleMenu}>الاسئله الشائعه؟</Link></li>
-                                 <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/register" onClick={toggleMenu}><div className='flex gap-2'><p>انشئ حسابك </p> <PersonAddIcon/></div></Link></li>
+                    {!token?(
+                        <>
+      <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/register" onClick={toggleMenu}><div className='flex gap-2'><p>انشئ حسابك </p> <PersonAddIcon/></div></Link></li>
                     <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/login" onClick={toggleMenu}><div className='flex gap-2'><p>سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
+                    </>
+                    ):(
+<li className={`bg-red-500 rounded hover:scale-105 duration-150 p-2 cursor-pointer  `} onClick={handelLogOut}>تسجيل الخروج</li>
+                    )}
+                           
                 </ul>
                 </div>
                 )}

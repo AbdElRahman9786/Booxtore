@@ -15,6 +15,7 @@ import {
 } from '@tanstack/react-query'
 import  Regester  from './pages/regester/Regester';
 import UserContext from './context/usercontextProvider';
+import CartContextProvider from './context/CartContext';
 const router=createBrowserRouter([
   {path:'/',element:<RootLayOut/>,
     errorElement:(
@@ -39,7 +40,9 @@ function App() {
 
     <QueryClientProvider client={queryClient}>
       <UserContext>
+        <CartContextProvider>
       <RouterProvider router={router} />
+      </CartContextProvider>
       </UserContext>
       </QueryClientProvider>
     </>

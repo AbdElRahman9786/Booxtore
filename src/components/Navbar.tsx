@@ -3,12 +3,13 @@ import imgCart from '../assets/images/cartIcon.702e88b26f5a977c99c3.png'
 import bookIcon from '../assets/images/bookicon.svg'
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import ScrollProgressBar from './ProgressPar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useContext, useState } from 'react';
 import { InfoContext } from '../context/UserInfoContext';
 import Cookies from "js-cookie";
 import { Cart } from './Cart';
+
 type toggleMenuType = () => void;
 
 
@@ -16,6 +17,7 @@ const Navbar: React.FC = () => {
     const [isOpen,setIsOpen]=useState<boolean>(false);
     const [openCart,setOpenCart]=useState<boolean>(false)
     const UserInfoContext=useContext(InfoContext)
+    const navigate=useNavigate()
     const token=Cookies.get('token')
     const toggleMenu:toggleMenuType = () => {
         setIsOpen((prev) => !prev);
@@ -24,6 +26,8 @@ const Navbar: React.FC = () => {
     function handelLogOut(){
         UserInfoContext.setUserInfo({email:'',id:'',role:''})
         Cookies.remove('token')
+      navigate('/login')
+
         
     }
 
@@ -52,11 +56,11 @@ const Navbar: React.FC = () => {
                 <li className='hover:shadow-2xl hover:scale-105 duration-150 ' onClick={handelOpenCart}><img src={imgCart} alt="cart iamge" className='w-[40px] p-2 bg-[#d8efe7] rounded-2xl hover:shadow-xl duration-150 cursor-pointer' /></li>
                              {!token?(
                         <>
-      <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/register" onClick={toggleMenu}><div className='flex gap-2'><p>انشئ حسابك </p> <PersonAddIcon/></div></Link></li>
-                    <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/login" onClick={toggleMenu}><div className='flex gap-2'><p>سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
+      <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/register" ><div className='flex gap-2'><p>انشئ حسابك </p> <PersonAddIcon/></div></Link></li>
+                    <li className='bg-[#b2ddd0] p-2 rounded-md border-[#408c7b] border-1 hover:shadow-2xl hover:scale-105  duration-150'><Link to="/login" ><div className='flex gap-2'><p>سجل دخولك</p><img src={bookIcon} alt="bookicon" /></div></Link></li>
                     </>
                     ):(
-<li className={`bg-red-500 rounded hover:scale-105 duration-150 p-2 cursor-pointer ${!UserInfoContext.userInfo.email?'hidden':'block'}  `} onClick={handelLogOut}>تسجيل الخروج</li>
+<li className={`bg-red-500 rounded hover:scale-105 duration-150 p-2 cursor-pointer   `} onClick={handelLogOut}>تسجيل الخروج</li>
                     )}
                            
               

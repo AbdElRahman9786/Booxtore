@@ -4,7 +4,9 @@ import imgbtnicon from '../../assets/images/bookIconBtn.faf1fedc69da3b7ef43af219
 import AllBooks from '../../components/AllBooks'
 import { Slider } from '../../components/Slider'
 import { Think } from '../../components/Think'
+import Cookies from "js-cookie";
 export const Home = () => {
+  const token=Cookies.get('token')
   return (
     <>
     <div>
@@ -25,7 +27,7 @@ export const Home = () => {
 </div>
 <Slider/>
 <Think/>
-<AllBooks/>
+{token ? <AllBooks/>:<></>}
 </div>
 
     </>

@@ -1,11 +1,11 @@
 import {  useContext, useState } from "react";
 import img from "../../assets/images/login.ebd58562113a46604e6a.png"
 import Input from "../../ui/input/Input";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation} from "@tanstack/react-query";
 import  loginRequset  from "../../util/sendhttp";
 import Button from "@mui/material/Button";
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from "react-router-dom";
+
 import decodeToken from "../../util/tokenDecoder";
 import { InfoContext } from "../../context/UserInfoContext";
 import Cookies from "js-cookie";
@@ -23,8 +23,10 @@ interface LoginData {
 const LogIn: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
   const infoContext=useContext(InfoContext)
-const navigate=useNavigate()
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
     if (name === 'email') {
@@ -54,6 +56,9 @@ const navigate=useNavigate()
         const info=decodeToken(data.token)
         
        infoContext.setUserInfo(info)
+       
+
+       
     },
     
     onError: () => {
@@ -72,7 +77,7 @@ const navigate=useNavigate()
   });
 setTimeout(() => {  
   if(isSuccess){
-    navigate('/')
+   window.location.href="/"
   }
 }, 1000);
 
@@ -80,6 +85,7 @@ setTimeout(() => {
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     mutate({ email, password });
+    
     
   }
 
